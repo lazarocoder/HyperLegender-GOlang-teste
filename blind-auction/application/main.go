@@ -36,7 +36,7 @@ import (
 			
 			client, err := channel.New(org1ChannelClientContext)
 			if err != nil {
-					fmt.Printf("Erro ao criar o cliente de canal: %s\n", err)
+					fmt.Printf("Error creating the channel client: %s\n", err)
 					return
 			}
 	
@@ -46,32 +46,32 @@ import (
 			
 			response, err := client.Execute(chaincode, "CreateAuction", "auction1", "Descrição do Leilão 1")
 			if err != nil {
-					fmt.Printf("Erro ao criar o leilão: %s\n", err)
+					fmt.Printf("Error while creating the auction: %s\n", err)
 					return
 			}
-			fmt.Printf("Resposta da criação do leilão: %s\n", response.TransactionID)
+			fmt.Printf("The response to the auction creation: %s\n", response.TransactionID)
 	
 			
 			response, err = client.Execute(chaincode, "PlaceBid", "auction1", "Bidder1", "100")
 			if err != nil {
-					fmt.Printf("Erro ao fazer um lance no leilão: %s\n", err)
+					fmt.Printf("Auction bidding error: %s\n", err)
 					return
 			}
-			fmt.Printf("Resposta do lance: %s\n", response.TransactionID)
+			fmt.Printf("Bid response: %s\n", response.TransactionID)
 	
 			
 			response, err = client.Execute(chaincode, "RevealBid", "auction1", "Bidder1", "100")
 			if err != nil {
-					fmt.Printf("Erro ao revelar o lance: %s\n", err)
+					fmt.Printf("A mistake when revealing the bid: %s\n", err)
 					return
 			}
-			fmt.Printf("Resposta da revelação do lance: %s\n", response.TransactionID)
+			fmt.Printf("Bid disclosure response: %s\n", response.TransactionID)
 	
 			
 			response, err = client.Execute(chaincode, "CloseAuction", "auction1")
 			if err != nil {
-					fmt.Printf("Erro ao fechar o leilão: %s\n", err)
+					fmt.Printf("Error when closing the auction: %s\n", err)
 					return
 			}
-			fmt.Printf("Resposta do fechamento do leilão: %s\n", response.TransactionID)
+			fmt.Printf("Closing auction response: %s\n", response.TransactionID)
 	}
